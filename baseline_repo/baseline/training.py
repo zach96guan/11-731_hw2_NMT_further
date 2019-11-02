@@ -222,7 +222,7 @@ def main():
             model.eval()
             valid_ppl = evaluate_ppl(model, valid_loader)
             print(f"Validation perplexity: {valid_ppl:.2f}", flush=True)
-            # TODO: Early stopping maybe
+            # Early stopping maybe
             if valid_ppl < best_ppl:
                 best_ppl = valid_ppl
                 print(f"Saving new best model (epoch {epoch} ppl {valid_ppl})")
