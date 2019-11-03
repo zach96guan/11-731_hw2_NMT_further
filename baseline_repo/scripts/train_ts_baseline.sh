@@ -26,7 +26,7 @@ python baseline/translate.py \
     --model-file en-ts-baseline.pt \
     --search "beam_search" \
     --beam-size 5 \
-    --input-file assignment2/data/en_ts/ents_parallel.bpe.dev.en \
+    --input-file ../data/en_ts/ents_parallel.bpe.dev.en \
     --output-file ents_parallel.dev.out.ts
 
 python baseline/translate.py \
@@ -36,5 +36,5 @@ python baseline/translate.py \
     --model-file en-ts-baseline.pt \
     --search "beam_search" \
     --beam-size 5 \
-    --input-file assignment2/data/en_ts/ents_parallel.bpe.test.en \
+    --input-file ../data/en_ts/ents_parallel.bpe.test.en \
     --output-file ents_parallel.test.out.ts

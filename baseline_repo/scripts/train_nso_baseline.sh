@@ -26,7 +26,7 @@ python baseline/translate.py \
     --model-file en-nso-baseline.pt \
     --search "beam_search" \
     --beam-size 5 \
-    --input-file assignment2/data/en_nso/ennso_parallel.bpe.dev.en \
+    --input-file ../data/en_nso/ennso_parallel.bpe.dev.en \
     --output-file ennso_parallel.dev.out.nso
 
 python baseline/translate.py \
@@ -36,5 +36,5 @@ python baseline/translate.py \
     --model-file en-nso-baseline.pt \
     --search "beam_search" \
     --beam-size 5 \
-    --input-file assignment2/data/en_nso/ennso_parallel.bpe.test.en \
+    --input-file ../data/en_nso/ennso_parallel.bpe.test.en \
     --output-file ennso_parallel.test.out.nso

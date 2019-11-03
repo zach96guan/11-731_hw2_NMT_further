@@ -26,7 +26,7 @@ python baseline/translate.py \
     --model-file en-af-baseline.pt \
     --search "beam_search" \
     --beam-size 5 \
-    --input-file assignment2/data/en_af/enaf_parallel.bpe.dev.en \
+    --input-file ../data/en_af/enaf_parallel.bpe.dev.en \
     --output-file enaf_parallel.dev.out.af
 
 python baseline/translate.py \
@@ -36,5 +36,5 @@ python baseline/translate.py \
     --model-file en-af-baseline.pt \
     --search "beam_search" \
     --beam-size 5 \
-    --input-file assignment2/data/en_af/enaf_parallel.bpe.test.en \
+    --input-file ../data/en_af/enaf_parallel.bpe.test.en \
     --output-file enaf_parallel.test.out.af
