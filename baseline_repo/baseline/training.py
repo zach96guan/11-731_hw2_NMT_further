@@ -7,12 +7,12 @@ from transformer import Transformer
 from tqdm import tqdm
 
 
-def load_data(src_lang, tgt_lang, cached_folder="assignment2/data", overwrite=False):
+def load_data(src_lang, tgt_lang, cached_folder="../data", overwrite=False):
     """Load data (and cache to file)"""
     cached_file = os.path.join(cached_folder, f"{src_lang}-{tgt_lang}.pt")
     if not os.path.isfile(cached_file) or overwrite:
         base_folder = os.path.join(
-            "assignment2",
+            "../",
             "data",
             f"{src_lang}_{tgt_lang}"
         )
