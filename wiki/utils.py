@@ -25,8 +25,8 @@ def read_corpus(file_path, source):
     for line in open(file_path, encoding='utf-8'):
         sent = line.strip().split(' ')
         # only append <s> and </s> to the target sentence
-        if source == 'tgt':
-            sent = ['<s>'] + sent + ['</s>']
+        # if source == 'tgt':
+        sent = ['<s>'] + sent + ['</s>']
         data.append(sent)
 
     return data
@@ -46,8 +46,5 @@ def batch_iter(data, batch_size, shuffle=False):
         indices = index_array[i * batch_size: (i + 1) * batch_size]
         examples = [data[idx] for idx in indices]
 
-        examples = sorted(examples, key=lambda e: len(e[0]), reverse=True)
-        src_sents = [e[0] for e in examples]
-        tgt_sents = [e[1] for e in examples]
-
-        yield src_sents, tgt_sents
+        sents = sorted(examples, key=lambda e: len(e), reverse=True)
+        yield sents

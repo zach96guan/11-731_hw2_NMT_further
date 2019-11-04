@@ -4,7 +4,7 @@
 A very basic implementation of neural machine translation
 
 Usage:
-    nmt.py train --train-src=<file> --train-tgt=<file> --dev-src=<file> --dev-tgt=<file> --vocab=<file> [options]
+    nmt.py train --train-src=<file> --dev-src=<file> --vocab=<file> [options]
     nmt.py decode [options] MODEL_PATH TEST_SOURCE_FILE OUTPUT_FILE
     nmt.py decode [options] MODEL_PATH TEST_SOURCE_FILE TEST_TARGET_FILE OUTPUT_FILE
 
@@ -39,13 +39,11 @@ import math
 import pickle
 import sys
 import time
-from collections import namedtuple
 
 import numpy as np
 from typing import List, Tuple, Dict, Set, Union
 from docopt import docopt
 from tqdm import tqdm
-from nltk.translate.bleu_score import corpus_bleu, sentence_bleu, SmoothingFunction
 
 import torch
 from torch import nn
@@ -53,16 +51,14 @@ from torch import Tensor
 import torch.nn.functional as F
 
 from utils import input_transpose, read_corpus, batch_iter
-from vocab import Vocab, VocabEntry
-
-from queue import PriorityQueue
+#from vocab import Vocab, VocabEntry
+from data import MTDataset, MTDataLoader, Vocab
 
 pad_token = '<pad>'
 pad_id = 0
 sos_id = 1
 eos_id = 2
 unk_id = 3
-Hypothesis = namedtuple('Hypothesis', ['value', 'score'])
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class Encoder(nn.Module):
@@ -92,9 +88,8 @@ class NMT(nn.Module):
         self.hidden_size = hidden_size
         self.dropout_rate = dropout_rate
         self.vocab = vocab
-        self.enc_vocab_size = len(vocab.src)
-        self.dec_vocab_size = len(vocab.tgt)
-        self.encoder = Encoder(self.enc_vocab_size, embed_size, hidden_size, dropout_rate)
+        self.vocab_size = len(vocab)
+        self.encoder = Encoder(self.vocab_size, embed_size, hidden_size, dropout_rate)
         self.criterion = nn.NLLLoss(reduction="sum", ignore_index=pad_id)
         self.device = device
 
@@ -109,7 +104,7 @@ class NMT(nn.Module):
         sent_len = len(sents_t)
         batch_size = len(sents_t[0])
 
-        indices_list = self.vocab.tgt.words2indices(sents_t)
+        indices_list = [[self.vocab.to_idx(w) for w in s] for s in sents_t]
         indices = torch.LongTensor(indices_list).to(device)
         loss = 0
 
@@ -143,11 +138,12 @@ class NMT(nn.Module):
         # e.g., `torch.no_grad()`
 
         with torch.no_grad():
-            for src_sents, tgt_sents in batch_iter(dev_data, batch_size):
-                loss = self.__call__(src_sents, tgt_sents)
+            for sents in batch_iter(dev_data, batch_size):
+                loss = self.__call__(sents)
 
                 cum_loss += loss
-                tgt_word_num_to_predict = sum(len(s[1:]) for s in tgt_sents)  # omitting the leading `<s>`
+                # should I include 0? 
+                tgt_word_num_to_predict = sum(len(s[1:]) for s in sents)  # omitting the leading `<s>`
                 cum_tgt_words += tgt_word_num_to_predict
 
             ppl = torch.exp(cum_loss / cum_tgt_words)
@@ -172,27 +168,6 @@ class NMT(nn.Module):
         """
         torch.save(self, path)
 
-
-def compute_corpus_level_bleu_score(references: List[List[str]], hypotheses: List[Hypothesis]) -> float:
-    """
-    Given decoding results and reference sentences, compute corpus-level BLEU score
-
-    Args:
-        references: a list of gold-standard reference target sentences
-        hypotheses: a list of hypotheses, one for each reference
-
-    Returns:
-        bleu_score: corpus-level BLEU score
-    """
-    if references[0][0] == '<s>':
-        references = [ref[1:-1] for ref in references]
-
-    bleu_score = corpus_bleu([[ref] for ref in references],
-                             [hyp.value for hyp in hypotheses])
-
-    return bleu_score
-
-
 def train(args: Dict[str, str]):
     train_data = read_corpus(args['--train-src'], source='src')
     dev_data = read_corpus(args['--dev-src'], source='src')
@@ -208,7 +183,10 @@ def train(args: Dict[str, str]):
     model_save_path = args['--save-to']
     optim_save_path = "work_dir/optim.bin"
 
-    vocab = pickle.load(open(args['--vocab'], 'rb'))
+    # vocab = pickle.load(open(args['--vocab'], 'rb'))
+    # initialize vocabe
+    vocab = Vocab.from_data_files(args['--vocab'])
+    print("vocab size = %d" % len(vocab))
 
     model = NMT(embed_size=int(args['--embed-size']),
                 hidden_size=int(args['--hidden-size']),
@@ -241,10 +219,11 @@ def train(args: Dict[str, str]):
             cum_loss += loss.item()
 
             loss.backward()
-            # torch.nn.utils.clip_grad_norm_(model.parameters(), clip_grad)
+            if clip_grad > 0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), clip_grad)
             optimizer.step()
 
-            tgt_words_num_to_predict = sum(len(s[1:]) for s in tgt_sents)  # omitting leading `<s>`
+            tgt_words_num_to_predict = sum(len(s[1:]) for s in sents)  # omitting leading `<s>`
             report_tgt_words += tgt_words_num_to_predict
             cumulative_tgt_words += tgt_words_num_to_predict
             report_examples += batch_size
