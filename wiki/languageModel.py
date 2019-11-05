@@ -312,7 +312,7 @@ def decode(args: Dict[str, str]):
 
     print(f"load model from {args['MODEL_PATH']}", file=sys.stderr)
     model = NMT.load(args['MODEL_PATH'])
-    model.decoder.dropout = nn.Dropout(0.)
+    model.encoder.dropout = nn.Dropout(0.)
 
     ces = []
     with torch.no_grad():
@@ -323,7 +323,7 @@ def decode(args: Dict[str, str]):
 
     with open(args['OUTPUT_FILE'], 'w') as f:
         for sent, ce in zip(test_data, ces):
-            f.write(ce + '\n')
+            f.write(str(ce) + '\n')
 
 def main():
     args = docopt(__doc__)
