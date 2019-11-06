@@ -15,7 +15,7 @@ python baseline/training.py \
     --dropout 0.3 \
     --word-dropout 0.1 \
     --lr 1e-3 \
-    --n-epochs 50 \
+    --n-epochs 40 \
     --tokens-per-batch 4000 \
     --clip-grad 1.0
 

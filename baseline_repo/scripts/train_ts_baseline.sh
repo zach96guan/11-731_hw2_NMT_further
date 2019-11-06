@@ -12,10 +12,10 @@ python baseline/training.py \
     --n-heads 4 \
     --embed-dim 512 \
     --hidden-dim 512 \
-    --dropout 0.2 \
+    --dropout 0.08 \
     --word-dropout 0.1 \
     --lr 1e-3 \
-    --n-epochs 30 \
+    --n-epochs 35 \
     --tokens-per-batch 8000 \
     --clip-grad 1.0
 

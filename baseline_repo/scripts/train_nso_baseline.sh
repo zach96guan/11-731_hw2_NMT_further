@@ -8,14 +8,14 @@ python baseline/training.py \
     --src en \
     --tgt nso \
     --model-file en-nso-baseline.pt \
-    --n-layers 4 \
+    --n-layers 3 \
     --n-heads 4 \
     --embed-dim 512 \
     --hidden-dim 512 \
-    --dropout 0.3 \
+    --dropout 0.2 \
     --word-dropout 0.1 \
     --lr 5e-4 \
-    --n-epochs 50 \
+    --n-epochs 30 \
     --tokens-per-batch 4000 \
     --clip-grad 1.0
 
