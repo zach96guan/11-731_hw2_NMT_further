@@ -1,0 +1,164 @@
+----- Epoch 1 -----
+100%|██████████| 2884/2884 [07:36<00:00,  6.31it/s, loss=3.109, ppl=22.41]  
+45it [00:01, 23.13it/s]Validation perplexity: 16.33
+Saving new best model (epoch 1 ppl 16.33113716272236)
+----- Epoch 2 -----
+
+100%|██████████| 2890/2890 [07:42<00:00,  6.25it/s, loss=2.970, ppl=19.48]
+100%|██████████| 45/45 [00:01<00:00, 23.07it/s]Validation perplexity: 10.44
+Saving new best model (epoch 2 ppl 10.440903473876022)
+----- Epoch 3 -----
+
+100%|██████████| 2896/2896 [07:30<00:00,  6.42it/s, loss=2.817, ppl=16.73]
+100%|██████████| 45/45 [00:01<00:00, 23.08it/s]Validation perplexity: 8.50
+Saving new best model (epoch 3 ppl 8.50078074773606)
+----- Epoch 4 -----
+
+100%|██████████| 2898/2898 [07:34<00:00,  6.38it/s, loss=2.276, ppl=9.74] 
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 7.02
+Saving new best model (epoch 4 ppl 7.01693834365591)
+----- Epoch 5 -----
+
+100%|██████████| 2885/2885 [07:34<00:00,  6.35it/s, loss=2.101, ppl=8.17] 
+100%|██████████| 45/45 [00:01<00:00, 23.05it/s]Validation perplexity: 6.46
+Saving new best model (epoch 5 ppl 6.458371050180188)
+----- Epoch 6 -----
+
+100%|██████████| 2884/2884 [07:24<00:00,  6.49it/s, loss=2.088, ppl=8.07] 
+100%|██████████| 45/45 [00:01<00:00, 23.10it/s]Validation perplexity: 5.99
+Saving new best model (epoch 6 ppl 5.989409742124964)
+----- Epoch 7 -----
+
+100%|██████████| 2887/2887 [07:27<00:00,  6.45it/s, loss=2.548, ppl=12.79]
+100%|██████████| 45/45 [00:01<00:00, 23.12it/s]Validation perplexity: 5.65
+Saving new best model (epoch 7 ppl 5.654164652895131)
+----- Epoch 8 -----
+
+100%|██████████| 2883/2883 [07:22<00:00,  6.51it/s, loss=2.572, ppl=13.10]
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 5.42
+Saving new best model (epoch 8 ppl 5.418329271321502)
+----- Epoch 9 -----
+
+100%|██████████| 2879/2879 [07:27<00:00,  6.43it/s, loss=2.179, ppl=8.84] 
+100%|██████████| 45/45 [00:01<00:00, 23.10it/s]Validation perplexity: 5.16
+Saving new best model (epoch 9 ppl 5.156097072029889)
+----- Epoch 10 -----
+
+100%|██████████| 2891/2891 [07:36<00:00,  6.33it/s, loss=1.889, ppl=6.61] 
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 5.03
+Saving new best model (epoch 10 ppl 5.02758865189243)
+----- Epoch 11 -----
+
+100%|██████████| 2881/2881 [07:24<00:00,  6.49it/s, loss=2.018, ppl=7.52] 
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 4.88
+Saving new best model (epoch 11 ppl 4.881735172792593)
+----- Epoch 12 -----
+
+100%|██████████| 2884/2884 [07:30<00:00,  6.40it/s, loss=2.007, ppl=7.44] 
+100%|██████████| 45/45 [00:01<00:00, 23.14it/s]Validation perplexity: 4.77
+Saving new best model (epoch 12 ppl 4.765160528542364)
+----- Epoch 13 -----
+
+100%|██████████| 2884/2884 [07:36<00:00,  6.31it/s, loss=1.735, ppl=5.67] 
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 4.65
+Saving new best model (epoch 13 ppl 4.6546757328422395)
+----- Epoch 14 -----
+
+100%|██████████| 2883/2883 [07:23<00:00,  6.49it/s, loss=1.899, ppl=6.68] 
+100%|██████████| 45/45 [00:01<00:00, 23.14it/s]Validation perplexity: 4.57
+Saving new best model (epoch 14 ppl 4.567563473374313)
+----- Epoch 15 -----
+
+100%|██████████| 2887/2887 [07:43<00:00,  6.23it/s, loss=1.914, ppl=6.78] 
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 4.52
+Saving new best model (epoch 15 ppl 4.520026324805161)
+----- Epoch 16 -----
+
+100%|██████████| 2887/2887 [07:24<00:00,  6.49it/s, loss=1.858, ppl=6.41] 
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 4.44
+Saving new best model (epoch 16 ppl 4.435874761777323)
+----- Epoch 17 -----
+
+100%|██████████| 2880/2880 [07:30<00:00,  6.39it/s, loss=1.481, ppl=4.40] 
+100%|██████████| 45/45 [00:01<00:00, 23.10it/s]Validation perplexity: 4.33
+Saving new best model (epoch 17 ppl 4.32885954227704)
+----- Epoch 18 -----
+
+100%|██████████| 2875/2875 [07:27<00:00,  6.42it/s, loss=1.942, ppl=6.97] 
+100%|██████████| 45/45 [00:01<00:00, 23.10it/s]Validation perplexity: 4.33
+Saving new best model (epoch 18 ppl 4.327446270875123)
+----- Epoch 19 -----
+
+100%|██████████| 2885/2885 [07:39<00:00,  6.27it/s, loss=1.616, ppl=5.03] 
+100%|██████████| 45/45 [00:01<00:00, 23.16it/s]Validation perplexity: 4.24
+Saving new best model (epoch 19 ppl 4.239770445541172)
+----- Epoch 20 -----
+
+100%|██████████| 2885/2885 [07:22<00:00,  6.51it/s, loss=1.923, ppl=6.84] 
+100%|██████████| 45/45 [00:01<00:00, 23.12it/s]Validation perplexity: 4.21
+Saving new best model (epoch 20 ppl 4.212515792720551)
+----- Epoch 21 -----
+
+100%|██████████| 2879/2879 [07:35<00:00,  6.32it/s, loss=1.668, ppl=5.30] 
+100%|██████████| 45/45 [00:01<00:00, 23.08it/s]Validation perplexity: 4.15
+Saving new best model (epoch 21 ppl 4.149723918328667)
+----- Epoch 22 -----
+
+100%|██████████| 2881/2881 [07:34<00:00,  6.35it/s, loss=1.480, ppl=4.39] 
+100%|██████████| 45/45 [00:01<00:00, 23.13it/s]Validation perplexity: 4.14
+Saving new best model (epoch 22 ppl 4.142690419663079)
+----- Epoch 23 -----
+
+100%|██████████| 2890/2890 [07:30<00:00,  6.42it/s, loss=1.472, ppl=4.36] 
+100%|██████████| 45/45 [00:01<00:00, 23.16it/s]Validation perplexity: 4.09
+Saving new best model (epoch 23 ppl 4.086730843900074)
+----- Epoch 24 -----
+
+100%|██████████| 2891/2891 [07:30<00:00,  6.42it/s, loss=1.515, ppl=4.55] 
+100%|██████████| 45/45 [00:01<00:00, 23.12it/s]Validation perplexity: 4.08
+Saving new best model (epoch 24 ppl 4.075898179469575)
+----- Epoch 25 -----
+
+100%|██████████| 2882/2882 [07:23<00:00,  6.50it/s, loss=1.549, ppl=4.71] 
+100%|██████████| 45/45 [00:01<00:00, 23.15it/s]Validation perplexity: 4.11
+----- Epoch 26 -----
+
+100%|██████████| 2886/2886 [07:29<00:00,  6.43it/s, loss=1.674, ppl=5.34] 
+100%|██████████| 45/45 [00:01<00:00, 23.14it/s]Validation perplexity: 3.90
+Saving new best model (epoch 26 ppl 3.8956165640205485)
+----- Epoch 27 -----
+
+100%|██████████| 2883/2883 [07:24<00:00,  6.48it/s, loss=1.445, ppl=4.24] 
+100%|██████████| 45/45 [00:01<00:00, 23.15it/s]Validation perplexity: 3.88
+Saving new best model (epoch 27 ppl 3.883527396046702)
+----- Epoch 28 -----
+
+100%|██████████| 2881/2881 [07:25<00:00,  6.46it/s, loss=1.449, ppl=4.26]
+100%|██████████| 45/45 [00:01<00:00, 23.10it/s]Validation perplexity: 3.86
+Saving new best model (epoch 28 ppl 3.8633397029823002)
+----- Epoch 29 -----
+
+100%|██████████| 2893/2893 [07:25<00:00,  6.49it/s, loss=1.121, ppl=3.07] 
+100%|██████████| 45/45 [00:01<00:00, 23.16it/s]Validation perplexity: 3.86
+Saving new best model (epoch 29 ppl 3.8565923927902803)
+----- Epoch 30 -----
+
+100%|██████████| 2888/2888 [07:25<00:00,  6.48it/s, loss=1.528, ppl=4.61] 
+100%|██████████| 45/45 [00:01<00:00, 23.14it/s]Validation perplexity: 3.82
+Saving new best model (epoch 30 ppl 3.8157566150616367)
+----- Epoch 31 -----
+
+100%|██████████| 2884/2884 [07:35<00:00,  6.34it/s, loss=1.653, ppl=5.22] 
+100%|██████████| 45/45 [00:01<00:00, 23.14it/s]Validation perplexity: 3.85
+----- Epoch 32 -----
+
+100%|██████████| 2895/2895 [07:33<00:00,  6.38it/s, loss=1.096, ppl=2.99]
+100%|██████████| 45/45 [00:01<00:00, 23.09it/s]Validation perplexity: 3.73
+Saving new best model (epoch 32 ppl 3.7290208101999935)
+----- Epoch 33 -----
+
+100%|██████████| 2879/2879 [07:30<00:00,  6.39it/s, loss=1.194, ppl=3.30] 
+100%|██████████| 45/45 [00:01<00:00, 23.11it/s]Validation perplexity: 3.72
+Saving new best model (epoch 33 ppl 3.7156379058617772)
+
+BLEU+case.mixed+numrefs.1+smooth.exp+tok.13a+version.1.4.2 = 37.05 60.9/41.6/31.0/23.9 (BP = 1.000 ratio = 1.007 hyp_len = 36351 ref_len = 36116)
