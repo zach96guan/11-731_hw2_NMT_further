@@ -5,8 +5,7 @@ A very basic implementation of neural machine translation
 
 Usage:
     nmt.py train --train-src=<file> --dev-src=<file> --vocab=<file> [options]
-    nmt.py decode [options] MODEL_PATH TEST_SOURCE_FILE OUTPUT_FILE
-    nmt.py decode [options] MODEL_PATH TEST_SOURCE_FILE TEST_TARGET_FILE OUTPUT_FILE
+    nmt.py decode [options] MODEL_PATH_I MODEL_PATH_N TEST_SOURCE_FILE OUTPUT_FILE
 
 Options:
     -h --help                               show this screen.
@@ -308,22 +307,46 @@ def decode(args: Dict[str, str]):
     If the target gold-standard sentences are given, the function also computes
     corpus-level BLEU score.
     """
+    threshold = 2.0
     test_data = read_corpus(args['TEST_SOURCE_FILE'], source='src')
 
-    print(f"load model from {args['MODEL_PATH']}", file=sys.stderr)
-    model = NMT.load(args['MODEL_PATH'])
-    model.encoder.dropout = nn.Dropout(0.)
+    print(f"load model from {args['MODEL_PATH_I']}", file=sys.stderr)
+    model_I = NMT.load(args['MODEL_PATH_I'])
+    model_I.encoder.dropout = nn.Dropout(0.)
 
-    ces = []
+    ces_I = []
     with torch.no_grad():
         for sent in tqdm(test_data, desc='Decoding', file=sys.stdout):
-            loss = model([sent]).item()
+            loss = model_I([sent]).item()
             ce = loss / len(sent)
-            ces.append(ce)
+            ces_I.append(ce)
 
+    print(f"load model from {args['MODEL_PATH_N']}", file=sys.stderr)
+    model_N = NMT.load(args['MODEL_PATH_N'])
+    model_N.encoder.dropout = nn.Dropout(0.)
+
+    ces_N = []
+    with torch.no_grad():
+        for sent in tqdm(test_data, desc='Decoding', file=sys.stdout):
+            loss = model_N([sent]).item()
+            ce = loss / len(sent)
+            ces_N.append(ce)
+
+    ces_diff = []
+    for ce_I, ce_N in zip(ces_I, ces_N):
+        ces_diff.append(ce_I - ce_N)
+
+    selected = 0
     with open(args['OUTPUT_FILE'], 'w') as f:
-        for sent, ce in zip(test_data, ces):
-            f.write(str(ce) + '\n')
+        for words, ce in zip(test_data, ces_diff):
+            if (ce < threshold):
+                selected += 1
+                words = words[1:-1:1]
+                sent = ("".join(words)).replace("▁",  " ▁").strip()
+                # f.write(str(ce) + ' ')
+                f.write(sent + '\n')
+
+    print("%d out of %d sentences selected." % (selected, len(test_data)))
 
 def main():
     args = docopt(__doc__)
